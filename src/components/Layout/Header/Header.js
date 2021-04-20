@@ -23,6 +23,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Typography';
+
+// Images
+import Pic1 from '../../../images/waldo.jpg';
 // -----------------------------------------------
 
 function Header() {
@@ -35,10 +38,12 @@ function Header() {
 							<div className='charactersContainer'>
 								<div className='character'>
 									<Avatar
-										src='https://where-s-waldo-top.web.app/static/media/waldo.1e2ee91f.jpg'
+										src={Pic1}
 										variant='square'
-										className={classes.square}
-									></Avatar>
+										className='square'
+									>
+										N
+									</Avatar>
 									<Typography
 										variant='h6'
 										// className={classes.title}
