@@ -1,0 +1,49 @@
+// -----------------------------------------------
+//
+// Styling for Header
+//
+// -----------------------------------------------
+
+nav {
+	.navbar-brand {
+		a {
+			color: $black;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: rgba(0, 0, 0, 0.7);
+		}
+	}
+
+	span {
+		.nav-link {
+			font-family: $sec;
+			text-transform: uppercase;
+		}
+
+		.nav-link,
+		.nav-link:hover,
+		.nav-link:focus {
+			color: $black;
+		}
+	}
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: $black;
+	font-family: $sec;
+	text-transform: uppercase;
+}
+
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+	color: $black;
+}
+
+@media screen and (max-width: 426px) {
+	.navbar-expand {
+		flex-flow: column;
+		justify-content: unset;
+	}
+}

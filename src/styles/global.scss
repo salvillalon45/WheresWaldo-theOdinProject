@@ -1,0 +1,139 @@
+// -----------------------------------------------
+//
+// Styling for the entire app
+//
+// -----------------------------------------------
+
+// Fonts
+// -----------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Secular+One&display=swap');
+
+// Color Variables
+// -----------------------------------------------
+$brown: #f6ecea;
+$white: #ffffff;
+$black: #212122;
+$mediumBrown: #be8643;
+$mediumBrownHover: #9a6e38;
+$cardHover: #ac401f;
+
+// Font Variables
+// -----------------------------------------------
+$lato: 'Lato', sans-serif;
+
+$sec: 'Secular One', sans-serif;
+
+// Pages
+// -----------------------------------------------
+
+// Components
+// -----------------------------------------------
+@import '../components/Layout/Layout.scss';
+
+html,
+body,
+#gatsby-focus-wrapper,
+#___gatsby {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	height: 100%;
+	background-color: $brown;
+	font-family: $lato;
+}
+
+#gatsby-focus-wrapper,
+#___gatsby,
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+// Text Styling and Colors
+// -----------------------------------------------
+.whiteText {
+	color: $white;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.upper {
+	text-transform: uppercase;
+}
+
+// Text Font
+// -----------------------------------------------
+.lato {
+	font-family: 'Lato', sans-serif;
+}
+
+.sec {
+	font-family: 'Secular One', sans-serif;
+}
+
+// Text Sizes
+// -----------------------------------------------
+.larger {
+	font-size: larger;
+}
+
+.xLarge {
+	font-size: x-large;
+}
+
+.xxLarge {
+	font-size: xx-large;
+}
+
+.xxxLarge {
+	font-size: xxx-large;
+}
+
+.bigHeading {
+	font-family: $sec;
+	text-transform: uppercase;
+	font-size: xx-large;
+}
+
+// Buttons
+// -----------------------------------------------
+.btn-primary.disabled,
+.btn-primary:disabled,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:focus,
+.btn-primary {
+	background-color: $mediumBrown;
+	border-color: $mediumBrown;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-weight: bold;
+}
+
+.btn-primary:hover {
+	background-color: $mediumBrownHover;
+	border-color: $mediumBrownHover;
+}
+
+.btn-primary:focus,
+.btn:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgb(81 83 85 / 25%);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgb(81 83 85 / 25%);
+}

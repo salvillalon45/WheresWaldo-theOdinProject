@@ -1,0 +1,54 @@
+// -----------------------------------------------
+//
+// Styling for Footer
+//
+// -----------------------------------------------
+
+.footerContainer {
+	display: flex;
+	justify-content: space-evenly;
+	flex-shrink: 0;
+	margin-top: 60px;
+	background-color: $white;
+	font-family: $sec;
+	padding-top: 85px;
+	padding-bottom: 65px;
+
+	a {
+		color: $white;
+	}
+
+	p {
+		color: $black;
+	}
+
+	ul {
+		text-align: center;
+
+		li {
+			color: $black;
+			list-style-type: none;
+			font-family: $lato;
+		}
+	}
+
+	.connectLogos {
+		justify-content: space-evenly;
+
+		svg.MuiSvgIcon-root {
+			font-size: 50px;
+			cursor: pointer;
+		}
+	}
+
+	.logoContainer {
+		font-family: $sec;
+		text-transform: uppercase;
+
+		#sub {
+			text-transform: unset;
+			font-size: unset;
+			font-family: $lato;
+		}
+	}
+}
