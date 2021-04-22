@@ -9,6 +9,12 @@ nav {
 		width: 63px;
 		height: 83px;
 	}
+
+	.charactersContainer {
+		display: flex;
+		flex-grow: 1;
+	}
+
 	.navbar-brand {
 		a {
 			color: $black;

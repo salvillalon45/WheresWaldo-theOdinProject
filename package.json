@@ -7,7 +7,10 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "bootstrap": "^4.6.0",
+    "firebase": "^8.4.1",
     "gatsby": "^3.2.1",
+    "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-gatsby-cloud": "^2.2.0",
     "gatsby-plugin-image": "^1.2.1",
     "gatsby-plugin-manifest": "^3.2.0",
@@ -19,6 +22,7 @@
     "gatsby-transformer-sharp": "^3.2.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "sass": "^1.32.11"

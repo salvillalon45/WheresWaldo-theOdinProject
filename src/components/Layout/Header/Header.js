@@ -14,18 +14,17 @@ import React from 'react';
 // Gatsby
 import { Link } from 'gatsby';
 
-// Bootstrap
-// import Navbar from 'react-bootstrap/NavBar';
-// import Nav from 'react-bootstrap/Nav';
-
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
 
 // Images
-import Pic1 from '../../../images/waldo.jpg';
+import Waldo from '../../../images/waldo.jpg';
+import Wenda from '../../../images/wenda.jpg';
+import Wizard from '../../../images/wizard.jpg';
+import Odlaw from '../../../images/odlaw.jpg';
 // -----------------------------------------------
 
 function Header() {
@@ -38,17 +37,61 @@ function Header() {
 							<div className='charactersContainer'>
 								<div className='character'>
 									<Avatar
-										src={Pic1}
+										src={Waldo}
 										variant='square'
 										className='square'
-									>
-										N
-									</Avatar>
+									/>
+
 									<Typography
 										variant='h6'
 										// className={classes.title}
 									>
-										News
+										Waldo
+									</Typography>
+								</div>
+
+								<div className='character'>
+									<Avatar
+										src={Wenda}
+										variant='square'
+										className='square'
+									/>
+
+									<Typography
+										variant='h6'
+										// className={classes.title}
+									>
+										Wenda
+									</Typography>
+								</div>
+
+								<div className='character'>
+									<Avatar
+										src={Wizard}
+										variant='square'
+										className='square'
+									/>
+
+									<Typography
+										variant='h6'
+										// className={classes.title}
+									>
+										Wizard
+									</Typography>
+								</div>
+
+								<div className='character'>
+									<Avatar
+										src={Odlaw}
+										variant='square'
+										className='square'
+									/>
+
+									<Typography
+										variant='h6'
+										// className={classes.title}
+									>
+										Odlaw
 									</Typography>
 								</div>
 							</div>
@@ -58,8 +101,7 @@ function Header() {
 									variant='h6'
 									// className={classes.title}
 								>
-									HOLA
-									{/* {new Date()} */}
+									05:00
 								</Typography>
 							</div>
 						</Toolbar>
