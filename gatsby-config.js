@@ -1,5 +1,3 @@
-const firebaseObj = require('./firebase-config');
-
 module.exports = {
 	siteMetadata: {
 		title: `Gatsby Default Starter`,
@@ -34,9 +32,18 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-firebase',
 			options: {
-				firebaseObj
+				credentials: {
+					apiKey: 'AIzaSyCTs3F3c3B2oDwEq1fqESfKJrJpb_ljcDI',
+					authDomain: 'theodinproject-whereswaldo.firebaseapp.com',
+					projectId: 'theodinproject-whereswaldo',
+					storageBucket: 'theodinproject-whereswaldo.appspot.com',
+					messagingSenderId: '90226339458',
+					appId: '1:90226339458:web:5f3db7076f45d3633c8e9b',
+					measurementId: 'G-SH9JSE93EB'
+				}
 			}
-		}`gatsby-plugin-gatsby-cloud`
+		},
+		`gatsby-plugin-gatsby-cloud`
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.dev/offline
 		// `gatsby-plugin-offline`,
