@@ -37,7 +37,24 @@ function GameImage() {
 		console.log({ top, right, bottom, left });
 		const { pageX, pageY } = event;
 		console.log({ pageX, pageY });
+
+		console.log(window);
+		console.log(window.innerWidth);
+		let x = Math.round((pageX / window.innerWidth) * 100);
+		let y = Math.round((pageY / window.innerWidth) * 100);
+		console.log({ x, y });
+
 		setCoords([pageX, pageY]);
+
+		if (x === 74 && y == 127) {
+			console.log('POKEBALL');
+		}
+		if (x >= 65 && x <= 66 && y >= 374 && y <= 378) {
+			console.log('FIN');
+		}
+		if (x >= 43 && x <= 45 && y >= 294 && y <= 295) {
+			console.log('MEG GRIFFIN');
+		}
 	}
 
 	return (

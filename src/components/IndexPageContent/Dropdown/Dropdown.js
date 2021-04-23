@@ -15,17 +15,19 @@ import * as React from 'react';
 
 function Dropdown(props) {
 	return (
-		<ul
+		<div
+			className='dropdownContainer'
 			style={{
-				position: 'absolute',
 				left: props.coords[0],
 				top: props.coords[1]
 			}}
 		>
-			<li>Profile</li>
-			<li>My account</li>
-			<li>Logout</li>
-		</ul>
+			<ul>
+				<li>Profile</li>
+				<li>My account</li>
+				<li>Logout</li>
+			</ul>
+		</div>
 	);
 }
 
