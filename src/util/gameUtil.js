@@ -1,13 +1,19 @@
+function print(statement) {
+	console.log('---------------------------------');
+	console.log(statement);
+	console.log('---------------------------------');
+}
+
 function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 	const userX = userCoords[0];
 	const userY = userCoords[1];
 	const dbX = dbCoords[userCharacterChoice].x;
 	const dbY = dbCoords[userCharacterChoice].y;
-	// console.log(userCharacterChoice);
-	// console.log({ userX });
-	// console.log({ userY });
-	// console.log({ dbX });
-	// console.log({ dbY });
+	console.log(userCharacterChoice);
+	console.log({ userX });
+	console.log({ userY });
+	console.log({ dbX });
+	console.log({ dbY });
 
 	if (
 		userX >= dbX[0] &&
@@ -35,4 +41,4 @@ function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 	// }
 }
 
-export { checkInputCoords };
+export { checkInputCoords, print };

@@ -6,4 +6,14 @@
 
 .dropdownContainer {
 	position: absolute;
+
+	ul {
+		li {
+			cursor: pointer;
+		}
+
+		li:hover {
+			color: orange;
+		}
+	}
 }
