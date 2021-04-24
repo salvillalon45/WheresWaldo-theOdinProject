@@ -17,52 +17,70 @@ import Dropdown from '../Dropdown';
 
 // Images
 import Background from '../../../images/background.jpg';
+
+// Util
+import { getCoordsFromDB } from '../../../util/firebaseUtil';
+import { checkInputCoords } from '../../../util/gameUtil';
 // -----------------------------------------------
 
 function GameImage() {
-	const [anchorEl, setAnchorEl] = React.useState(false);
+	const [showDropdown, setShowDropdown] = React.useState(false);
+	const [dbCoords, setDBCoords] = React.useState(null);
 	const [coords, setCoords] = React.useState([]);
+	const [userCharacterChoice, setUserCharacterChoice] = React.useState('');
+
+	function handleUserCharacterChoice(userInput) {
+		setUserCharacterChoice(userInput);
+	}
 
 	function handleClick(event) {
-		console.log('Clicked');
-		console.log(event);
-		setAnchorEl(!anchorEl);
-		let elem = document
-			.querySelector('.gameImageContainer')
-			.getBoundingClientRect();
-		let top = elem.top + window.pageYOffset;
-		let right = elem.right + window.pageXOffset;
-		let bottom = elem.bottom + window.pageYOffset;
-		let left = elem.left + window.pageXOffset;
-		console.log({ top, right, bottom, left });
+		setShowDropdown(!showDropdown);
+		// let elem = document
+		// 	.querySelector('.gameImageContainer')
+		// 	.getBoundingClientRect();
+		// let top = elem.top + window.pageYOffset;
+		// let right = elem.right + window.pageXOffset;
+		// let bottom = elem.bottom + window.pageYOffset;
+		// let left = elem.left + window.pageXOffset;
+		// console.log({ top, right, bottom, left });
+		// console.log(window);
+		// console.log(window.innerWidth);
 		const { pageX, pageY } = event;
-		console.log({ pageX, pageY });
+		// console.log({ pageX, pageY });
 
-		console.log(window);
-		console.log(window.innerWidth);
-		let x = Math.round((pageX / window.innerWidth) * 100);
-		let y = Math.round((pageY / window.innerWidth) * 100);
-		console.log({ x, y });
+		const x = Math.round((pageX / window.innerWidth) * 100);
+		const y = Math.round((pageY / window.innerWidth) * 100);
+		const userCoords = [x, y];
+		// console.log({ x, y });
 
 		setCoords([pageX, pageY]);
 
-		if (x === 74 && y == 127) {
-			console.log('POKEBALL');
-		}
-		if (x >= 65 && x <= 66 && y >= 374 && y <= 378) {
-			console.log('FIN');
-		}
-		if (x >= 43 && x <= 45 && y >= 294 && y <= 295) {
-			console.log('MEG GRIFFIN');
+		if (userCharacterChoice.length > 0) {
+			const result = checkInputCoords(
+				userCoords,
+				userCharacterChoice,
+				dbCoords
+			);
+			console.log('RESULT ' + result);
 		}
 	}
+
+	React.useEffect(async () => {
+		const result = await getCoordsFromDB(1);
+		setDBCoords(result);
+	}, []);
 
 	return (
 		<div
 			className='gameImageContainer'
 			onClick={event => handleClick(event)}
 		>
-			{anchorEl && <Dropdown coords={coords} />}
+			{showDropdown && (
+				<Dropdown
+					handleUserCharacterChoice={handleUserCharacterChoice}
+					coords={coords}
+				/>
+			)}
 
 			<img src={Background} alt='image background' />
 		</div>

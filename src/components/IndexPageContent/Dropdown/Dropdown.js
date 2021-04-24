@@ -23,9 +23,19 @@ function Dropdown(props) {
 			}}
 		>
 			<ul>
-				<li>Profile</li>
-				<li>My account</li>
-				<li>Logout</li>
+				<li onClick={() => props.handleUserCharacterChoice('fin')}>
+					Fin
+				</li>
+				<li onClick={() => props.handleUserCharacterChoice('pokeball')}>
+					Pokeball
+				</li>
+				<li
+					onClick={() =>
+						props.handleUserCharacterChoice('megGriffin')
+					}
+				>
+					Meg Griffin
+				</li>
 			</ul>
 		</div>
 	);
