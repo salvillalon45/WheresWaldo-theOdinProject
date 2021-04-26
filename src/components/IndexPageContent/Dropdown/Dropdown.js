@@ -23,6 +23,16 @@ function Dropdown(props) {
 		props.handleUserCharacterChoice(character);
 	}
 
+	function renderDropdownItems() {
+		return props.characters.map(character => {
+			return (
+				<li onClick={event => handleCharacterChoice(event, character)}>
+					{character}
+				</li>
+			);
+		});
+	}
+
 	// const Li = styled.Li`
 	// 	font-size: 1.5em;
 	// 	text-align: center;
@@ -50,7 +60,7 @@ function Dropdown(props) {
 			}}
 		>
 			<ul>
-				<li onClick={event => handleCharacterChoice(event, 'fin')}>
+				{/* <li onClick={event => handleCharacterChoice(event, 'fin')}>
 					Fin
 				</li>
 
@@ -64,7 +74,8 @@ function Dropdown(props) {
 					}
 				>
 					Meg Griffin
-				</li>
+				</li> */}
+				{renderDropdownItems()}
 			</ul>
 		</div>
 	);

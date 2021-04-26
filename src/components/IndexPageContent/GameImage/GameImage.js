@@ -33,6 +33,8 @@ function GameImage() {
 	const [userCharacterChoice, setUserCharacterChoice] = React.useState('');
 	const [characterSelected, setCharacterSelect] = React.useState(false);
 	const [choiceStatus, setChoiceStatus] = React.useState(false);
+	const [open, setOpen] = React.useState(false);
+	const [characters, setCharacters] = React.useState([]);
 
 	function handleUserCharacterChoice(userInput) {
 		setUserCharacterChoice(userInput);
@@ -79,6 +81,7 @@ function GameImage() {
 
 			if (result) {
 				setChoiceStatus(true);
+				removeCharacter();
 			} else {
 				setChoiceStatus(false);
 			}
@@ -88,12 +91,27 @@ function GameImage() {
 		}
 	}
 
+	function removeCharacter(userCharacterChoice) {
+		characters.splice(characters.indexOf(userCharacterChoice), 1);
+	} // MOVE TO UTIL
+
+	function handleModalOpen() {
+		console.log('GOING TO OPEn');
+		setOpen(true);
+	}
+
+	function handleModalClose() {
+		setOpen(false);
+	}
+
 	async function getDataFromDB() {
 		const result = await getCoordsFromDB(1);
 		setDBCoords(result);
+		setCharacters(Object.keys(result));
 	}
 
 	React.useEffect(async () => {
+		handleModalOpen();
 		getDataFromDB();
 	}, []);
 
@@ -108,7 +126,8 @@ function GameImage() {
 			className='gameImageContainer'
 			onClick={event => handleClick(event)}
 		>
-			<GameModal />
+			<GameModal open={open} handleModalClose={handleModalClose} />
+
 			{choiceStatus && (
 				<CharacterChoiceResult
 					userCharacterChoice={userCharacterChoice}
@@ -119,6 +138,7 @@ function GameImage() {
 				<Dropdown
 					handleUserCharacterChoice={handleUserCharacterChoice}
 					coords={styleCoords}
+					characters={characters}
 				/>
 			)}
 

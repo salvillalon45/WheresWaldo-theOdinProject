@@ -17,47 +17,32 @@ import Modal from '@material-ui/core/Modal';
 
 //  Styled Components
 import styled from 'styled-components';
+import { ModalContent } from './styling';
 // -----------------------------------------------
 
-function GameModal() {
-	const [open, setOpen] = React.useState(false);
-	// function rand() {
-	//     return Math
-	// }
-
-	const ModalContent = styled.div`
-		position: absolute;
-		width: 400;
-		backgroundcolor: red;
-		border: 2px solid blue;
-		boxshadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
-			0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
-		padding: 16px 32px 24px;
-		top: 55%;
-		left: 51%;
-		transform: translate(-55%, -51%);
-	`;
-
-	const handleOpen = () => {
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
+function GameModal(props) {
+	function handleModalAction(event) {
+		event.stopPropagation();
+		event.preventDefault();
+		props.handleModalClose();
+	}
 
 	return (
 		<div>
-			<button type='button' onClick={handleOpen}>
-				Open Modal
-			</button>
 			<Modal
-				open={open}
-				onClose={handleClose}
+				open={props.open}
 				aria-labelledby='simple-modal-title'
 				aria-describedby='simple-modal-description'
 			>
-				<ModalContent>HEOL </ModalContent>
+				<ModalContent>
+					HEOL
+					<button
+						type='button'
+						onClick={event => handleModalAction(event)}
+					>
+						Start
+					</button>
+				</ModalContent>
 			</Modal>
 		</div>
 	);

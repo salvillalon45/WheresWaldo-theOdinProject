@@ -11,7 +11,7 @@
 // React
 import * as React from 'react';
 
-// Images
+// Components
 import GameImage from './GameImage';
 // -----------------------------------------------
 
