@@ -15,6 +15,7 @@ import * as React from 'react';
 // Components
 import Dropdown from '../Dropdown';
 import CharacterChoiceResult from '../CharacterChoiceResult';
+import GameModal from '../GameModal';
 
 // Images
 import Background from '../../../images/background.jpg';
@@ -107,6 +108,7 @@ function GameImage() {
 			className='gameImageContainer'
 			onClick={event => handleClick(event)}
 		>
+			<GameModal />
 			{choiceStatus && (
 				<CharacterChoiceResult
 					userCharacterChoice={userCharacterChoice}
