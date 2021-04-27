@@ -39,6 +39,7 @@ function GameImage() {
 	const [choiceStatus, setChoiceStatus] = React.useState(false);
 	const [open, setOpen] = React.useState(false);
 	const [characters, setCharacters] = React.useState([]);
+	const [isGameOver, setIsGameOver] = React.useState(false);
 
 	function handleUserCharacterChoice(userInput) {
 		setUserCharacterChoice(userInput);
@@ -136,8 +137,6 @@ function GameImage() {
 		console.log('userCharacterChoice:: ' + userCharacterChoice);
 		checkCharacterChoice();
 	});
-
-	function test() {}
 
 	return (
 		<div

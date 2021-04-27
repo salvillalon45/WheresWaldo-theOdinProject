@@ -11,8 +11,8 @@
 // React
 import React from 'react';
 
-// Gatsby
-import { Link } from 'gatsby';
+// Components
+import Timer from '../../IndexPageContent/Timer';
 
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
@@ -23,8 +23,6 @@ import Avatar from '@material-ui/core/Avatar';
 // Images
 import Waldo from '../../../images/waldo.jpg';
 import Wenda from '../../../images/wenda.jpg';
-import Wizard from '../../../images/wizard.jpg';
-import Odlaw from '../../../images/odlaw.jpg';
 // -----------------------------------------------
 
 function Header() {
@@ -64,21 +62,6 @@ function Header() {
 										Wenda
 									</Typography>
 								</div>
-
-								<div className='character'>
-									<Avatar
-										src={Wizard}
-										variant='square'
-										className='square'
-									/>
-
-									<Typography
-										variant='h6'
-										// className={classes.title}
-									>
-										Wizard
-									</Typography>
-								</div>
 							</div>
 
 							<div className='timeContainer'>
@@ -86,7 +69,7 @@ function Header() {
 									variant='h6'
 									// className={classes.title}
 								>
-									05:00
+									<Timer isGameOver={false} />
 								</Typography>
 							</div>
 						</Toolbar>

@@ -1,3 +1,10 @@
+// -----------------------------------------------
+//
+// util -> gameUtil.js
+// Desc: Functions to help play the game
+//
+// -----------------------------------------------
+
 function print(statement) {
 	console.log('---------------------------------');
 	console.log(statement);
