@@ -79,21 +79,6 @@ function Header() {
 										Wizard
 									</Typography>
 								</div>
-
-								<div className='character'>
-									<Avatar
-										src={Odlaw}
-										variant='square'
-										className='square'
-									/>
-
-									<Typography
-										variant='h6'
-										// className={classes.title}
-									>
-										Odlaw
-									</Typography>
-								</div>
 							</div>
 
 							<div className='timeContainer'>

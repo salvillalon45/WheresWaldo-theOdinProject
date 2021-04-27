@@ -27,8 +27,6 @@ function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 		return false;
 	}
 	// }
-
-	// if (userCharacterChoice === 'fin') {
 	// 	if (userX >= dbX[0] && userX <= 66 && userY >= 374 && userY <= 378) {
 	// 		console.log('FIN');
 	// 	}
@@ -39,6 +37,21 @@ function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 	// 		console.log('MEG GRIFFIN');
 	// 	}
 	// }
+	// if (userCharacterChoice === 'fin') {
 }
 
-export { checkInputCoords, print };
+function removeCharacter(userCharacterChoice, characters) {
+	characters.splice(characters.indexOf(userCharacterChoice), 1);
+}
+
+function resetMessage() {
+	const characterChoiceResultContainer = document.querySelector(
+		'.characterChoiceResultContainer'
+	);
+
+	setTimeout(function () {
+		characterChoiceResultContainer.style.display = 'none';
+	}, 2000);
+}
+
+export { checkInputCoords, print, removeCharacter, resetMessage };

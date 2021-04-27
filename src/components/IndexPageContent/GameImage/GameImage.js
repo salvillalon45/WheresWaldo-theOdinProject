@@ -22,7 +22,11 @@ import Background from '../../../images/background.jpg';
 
 // Util
 import { getCoordsFromDB } from '../../../util/firebaseUtil';
-import { checkInputCoords, print } from '../../../util/gameUtil';
+import {
+	checkInputCoords,
+	print,
+	removeCharacter
+} from '../../../util/gameUtil';
 // -----------------------------------------------
 
 function GameImage() {
@@ -81,7 +85,7 @@ function GameImage() {
 
 			if (result) {
 				setChoiceStatus(true);
-				removeCharacter();
+				removeCharacter(userCharacterChoice, characters);
 			} else {
 				setChoiceStatus(false);
 			}
@@ -90,10 +94,6 @@ function GameImage() {
 			// setUserCharacterChoice('');
 		}
 	}
-
-	function removeCharacter(userCharacterChoice) {
-		characters.splice(characters.indexOf(userCharacterChoice), 1);
-	} // MOVE TO UTIL
 
 	function handleModalOpen() {
 		console.log('GOING TO OPEn');
@@ -110,6 +110,22 @@ function GameImage() {
 		setCharacters(Object.keys(result));
 	}
 
+	function renderCharacterChoiceResult() {
+		let result = '';
+		// const characterChoiceResultContainer = document;
+		if (choiceStatus) {
+			result = (
+				<CharacterChoiceResult
+					userCharacterChoice={userCharacterChoice}
+				/>
+			);
+		} else if (choiceStatus === false && userCharacterChoice) {
+			result = <CharacterChoiceResult userCharacterChoice={''} />;
+		}
+
+		return result;
+	}
+
 	React.useEffect(async () => {
 		handleModalOpen();
 		getDataFromDB();
@@ -121,6 +137,8 @@ function GameImage() {
 		checkCharacterChoice();
 	});
 
+	function test() {}
+
 	return (
 		<div
 			className='gameImageContainer'
@@ -128,11 +146,7 @@ function GameImage() {
 		>
 			<GameModal open={open} handleModalClose={handleModalClose} />
 
-			{choiceStatus && (
-				<CharacterChoiceResult
-					userCharacterChoice={userCharacterChoice}
-				/>
-			)}
+			{renderCharacterChoiceResult()}
 
 			{showDropdown && (
 				<Dropdown

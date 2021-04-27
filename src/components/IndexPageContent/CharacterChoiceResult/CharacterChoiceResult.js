@@ -13,31 +13,32 @@
 import * as React from 'react';
 
 //  Styled Components
-import styled from 'styled-components';
+import { Title } from './styling';
+
+// Util
+import { resetMessage } from '../../../util/gameUtil';
 // -----------------------------------------------
 
 function CharacterChoiceResult(props) {
 	const { userCharacterChoice } = props;
 
-	const Title = styled.h1`
-		font-size: 1.5em;
-		text-align: center;
-		color: palevioletred;
-		display: flex;
-		position: fixed;
-		padding-top: 6px;
-		padding-bottom: 6px;
-		padding-left: 8px;
-		padding-right: 8px;
-		border-radius: 10px;
-		left: 50%;
-		top: 12%;
-		transform: translate(-50%, 0);
-		font-size: calc((0.2em + 1vmin) + (0.2em + 1vmax));
-		background: #22222c;
-	`;
+	function renderCharacterChoiceResult() {
+		if (userCharacterChoice.length === 0) {
+			return <Title>Try Again!</Title>;
+		}
 
-	return <Title>You found {userCharacterChoice}!</Title>;
+		return <Title>You found {userCharacterChoice}!</Title>;
+	}
+
+	React.useEffect(() => {
+		resetMessage();
+	});
+
+	return (
+		<div className='characterChoiceResultContainer'>
+			{renderCharacterChoiceResult()}
+		</div>
+	);
 }
 
 export default CharacterChoiceResult;
