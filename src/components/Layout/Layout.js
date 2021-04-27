@@ -24,11 +24,11 @@ function Layout(props) {
 
 	return (
 		<>
-			<Header />
+			{/* <Header /> */}
 
-			<main id={id}>{children}</main>
+			<>{children}</>
 
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 }

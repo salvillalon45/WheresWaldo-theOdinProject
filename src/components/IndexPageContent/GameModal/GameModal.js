@@ -21,10 +21,18 @@ import { ModalContent } from './styling';
 // -----------------------------------------------
 
 function GameModal(props) {
+	const { gameStatus } = props;
+
 	function handleModalAction(event) {
 		event.stopPropagation();
 		event.preventDefault();
 		props.handleModalClose();
+
+		if (gameStatus === 0) {
+			props.handleIsGameOver(1);
+		} else {
+			props.handleIsGameOver(2);
+		}
 	}
 
 	return (

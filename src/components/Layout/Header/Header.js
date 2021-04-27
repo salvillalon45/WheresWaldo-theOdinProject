@@ -25,7 +25,9 @@ import Waldo from '../../../images/waldo.jpg';
 import Wenda from '../../../images/wenda.jpg';
 // -----------------------------------------------
 
-function Header() {
+function Header(props) {
+	const { isGameOver } = props;
+
 	return (
 		<header>
 			<nav>
@@ -69,7 +71,7 @@ function Header() {
 									variant='h6'
 									// className={classes.title}
 								>
-									<Timer isGameOver={false} />
+									<Timer isGameOver={isGameOver} />
 								</Typography>
 							</div>
 						</Toolbar>

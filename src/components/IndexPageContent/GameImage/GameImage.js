@@ -29,7 +29,7 @@ import {
 } from '../../../util/gameUtil';
 // -----------------------------------------------
 
-function GameImage() {
+function GameImage(props) {
 	const [showDropdown, setShowDropdown] = React.useState(false);
 	const [dbCoords, setDBCoords] = React.useState(null);
 	const [styleCoords, setStyleCoords] = React.useState([]);
@@ -39,7 +39,7 @@ function GameImage() {
 	const [choiceStatus, setChoiceStatus] = React.useState(false);
 	const [open, setOpen] = React.useState(false);
 	const [characters, setCharacters] = React.useState([]);
-	const [isGameOver, setIsGameOver] = React.useState(false);
+	const [gameStatus, setGameStatus] = React.useState(0);
 
 	function handleUserCharacterChoice(userInput) {
 		setUserCharacterChoice(userInput);
@@ -133,8 +133,6 @@ function GameImage() {
 	}, []);
 
 	React.useEffect(() => {
-		console.log('Inside useEffect()');
-		console.log('userCharacterChoice:: ' + userCharacterChoice);
 		checkCharacterChoice();
 	});
 
@@ -143,7 +141,12 @@ function GameImage() {
 			className='gameImageContainer'
 			onClick={event => handleClick(event)}
 		>
-			<GameModal open={open} handleModalClose={handleModalClose} />
+			<GameModal
+				open={open}
+				handleModalClose={handleModalClose}
+				handleIsGameOver={props.handleIsGameOver}
+				gameStatus={gameStatus}
+			/>
 
 			{renderCharacterChoiceResult()}
 
