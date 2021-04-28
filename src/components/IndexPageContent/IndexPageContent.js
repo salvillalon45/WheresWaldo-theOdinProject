@@ -25,6 +25,11 @@ function IndexPageContent() {
 		setIsGameOver(value);
 	}
 
+	// function handleTimer(value, status) {
+	// 	if ()
+	// 	setTimer()
+	// }
+
 	return (
 		<>
 			<Header isGameOver={isGameOver} />

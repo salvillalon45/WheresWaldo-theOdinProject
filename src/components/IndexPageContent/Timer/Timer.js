@@ -12,13 +12,13 @@
 // React
 import * as React from 'react';
 
-import StopWatch from './stopwatch';
+// Util
+import { formatTime } from '../../../util/gameUtil';
 // -----------------------------------------------
 
 function Timer(props) {
 	const { isGameOver } = props;
 	const [timer, setTimer] = React.useState(0);
-	const watch = StopWatch();
 
 	React.useEffect(() => {
 		console.log('INSIDE TIMER USE EFFECT()');
@@ -30,12 +30,10 @@ function Timer(props) {
 			interval = setInterval(() => {
 				setTimer(timer => timer + 1);
 			}, 1000);
-			console.log(watch.start());
 		} else if (isGameOver === 2) {
 			// Player finished
 			clearInterval(interval);
 			setTimer(0);
-			console.log(watch.stop());
 		}
 
 		return () => {
@@ -43,9 +41,7 @@ function Timer(props) {
 		};
 	}, [isGameOver]);
 
-	console.log(watch.duration());
-
-	return <>{timer}</>;
+	return <>{formatTime(timer)}</>;
 }
 
 export default Timer;

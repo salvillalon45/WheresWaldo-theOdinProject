@@ -69,6 +69,7 @@ function Header(props) {
 							<div className='timeContainer'>
 								<Typography
 									variant='h6'
+									id='timer'
 									// className={classes.title}
 								>
 									<Timer isGameOver={isGameOver} />

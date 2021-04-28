@@ -22,18 +22,33 @@ import { ModalContent } from './styling';
 
 function GameModal(props) {
 	const { gameStatus } = props;
+	const [buttonMessage, setButtonMessage] = React.useState('');
 
 	function handleModalAction(event) {
 		event.stopPropagation();
 		event.preventDefault();
-		props.handleModalClose();
 
 		if (gameStatus === 0) {
 			props.handleIsGameOver(1);
+			props.handleModalClose();
 		} else {
 			props.handleIsGameOver(2);
+			props.handleGameStatus(0);
 		}
 	}
+
+	function renderModalContent() {
+		console.log({ gameStatus });
+		if (gameStatus === 0) {
+			setButtonMessage('Start Game');
+		} else {
+			setButtonMessage('Submit');
+		}
+	}
+
+	React.useEffect(() => {
+		renderModalContent();
+	});
 
 	return (
 		<div>
@@ -48,7 +63,7 @@ function GameModal(props) {
 						type='button'
 						onClick={event => handleModalAction(event)}
 					>
-						Start
+						{buttonMessage}
 					</button>
 				</ModalContent>
 			</Modal>

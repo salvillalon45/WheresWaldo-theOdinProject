@@ -58,7 +58,22 @@ function resetMessage() {
 
 	setTimeout(function () {
 		characterChoiceResultContainer.style.display = 'none';
-	}, 2000);
+	}, 5000);
 }
 
-export { checkInputCoords, print, removeCharacter, resetMessage };
+function formatTime(time) {
+	// slice(-2) extracts the last two elements in the sequence.
+	// console.log({ time });
+	const seconds = `0${Math.round(time % 60)}`.slice(-2);
+	// console.log(`0${Math.round(time % 60)}`);
+	// console.log({ seconds });
+	const minutes = `${Math.floor(time / 60)}`;
+	// console.log({ minutes });
+	const showMinutes = `0${minutes % 60}`.slice(-2);
+	// console.log({ showMinutes });
+	const hours = `0${Math.floor(time / 3600)}`.slice(-2);
+	// console.log({ hours });
+	return `${hours}:${showMinutes}:${seconds}`;
+}
+
+export { checkInputCoords, print, removeCharacter, resetMessage, formatTime };

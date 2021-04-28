@@ -96,6 +96,10 @@ function GameImage(props) {
 		}
 	}
 
+	function handleGameStatus(value) {
+		setGameStatus(value);
+	}
+
 	function handleModalOpen() {
 		console.log('GOING TO OPEn');
 		setOpen(true);
@@ -136,6 +140,19 @@ function GameImage(props) {
 		checkCharacterChoice();
 	});
 
+	React.useEffect(() => {
+		console.log('USE EFFECT FOR GAME OVER CHECK');
+		console.log(characters.length);
+
+		if (characters.length === 0 && dbCoords) {
+			console.log('FINISHED');
+			console.log(document.getElementById('timer'));
+			props.handleIsGameOver(true);
+			handleModalOpen();
+			setGameStatus(1);
+		}
+	}, [characters.length !== 0]);
+
 	return (
 		<div
 			className='gameImageContainer'
@@ -146,6 +163,7 @@ function GameImage(props) {
 				handleModalClose={handleModalClose}
 				handleIsGameOver={props.handleIsGameOver}
 				gameStatus={gameStatus}
+				handleGameStatus={handleGameStatus}
 			/>
 
 			{renderCharacterChoiceResult()}
