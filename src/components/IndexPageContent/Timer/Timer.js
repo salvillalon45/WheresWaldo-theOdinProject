@@ -18,7 +18,6 @@ import { formatTime } from '../../../util/gameUtil';
 
 function Timer(props) {
 	const { isGameOver } = props;
-	const [timer, setTimer] = React.useState(0);
 
 	React.useEffect(() => {
 		console.log('INSIDE TIMER USE EFFECT()');

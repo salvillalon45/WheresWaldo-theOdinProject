@@ -22,7 +22,6 @@ import { ModalContent } from './styling';
 
 function GameModal(props) {
 	const { gameStatus } = props;
-	const [buttonMessage, setButtonMessage] = React.useState('');
 
 	function handleModalAction(event) {
 		event.stopPropagation();
@@ -31,19 +30,50 @@ function GameModal(props) {
 		if (gameStatus === 0) {
 			props.handleIsGameOver(1);
 			props.handleModalClose();
-		} else {
+		} else if (gameStatus === 1) {
 			props.handleIsGameOver(2);
-			props.handleGameStatus(0);
+			props.handleGameStatus(2);
 		}
 	}
 
 	function renderModalContent() {
-		console.log({ gameStatus });
+		let result = '';
+
 		if (gameStatus === 0) {
-			setButtonMessage('Start Game');
+			result = (
+				<>
+					<p>Welcome to Where's Waldow!</p>
+
+					<button
+						type='button'
+						onClick={event => handleModalAction(event)}
+					>
+						Start Game
+					</button>
+				</>
+			);
+		} else if (gameStatus === 1) {
+			result = (
+				<>
+					<p>You found all characters! Submit your score!</p>
+
+					<button
+						type='button'
+						onClick={event => handleModalAction(event)}
+					>
+						Submit
+					</button>
+				</>
+			);
 		} else {
-			setButtonMessage('Submit');
+			result = (
+				<>
+					<p>Thanks for playing!</p>
+				</>
+			);
 		}
+
+		return result;
 	}
 
 	React.useEffect(() => {
@@ -57,15 +87,7 @@ function GameModal(props) {
 				aria-labelledby='simple-modal-title'
 				aria-describedby='simple-modal-description'
 			>
-				<ModalContent>
-					HEOL
-					<button
-						type='button'
-						onClick={event => handleModalAction(event)}
-					>
-						{buttonMessage}
-					</button>
-				</ModalContent>
+				<ModalContent>{renderModalContent()}</ModalContent>
 			</Modal>
 		</div>
 	);
