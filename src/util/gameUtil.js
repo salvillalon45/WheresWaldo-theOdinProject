@@ -16,11 +16,11 @@ function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 	const userY = userCoords[1];
 	const dbX = dbCoords[userCharacterChoice].x;
 	const dbY = dbCoords[userCharacterChoice].y;
-	console.log(userCharacterChoice);
-	console.log({ userX });
-	console.log({ userY });
-	console.log({ dbX });
-	console.log({ dbY });
+	// console.log(userCharacterChoice);
+	// console.log({ userX });
+	// console.log({ userY });
+	// console.log({ dbX });
+	// console.log({ dbY });
 
 	if (
 		userX >= dbX[0] &&
@@ -52,13 +52,22 @@ function removeCharacter(userCharacterChoice, characters) {
 }
 
 function resetMessage() {
-	const characterChoiceResultContainer = document.querySelector(
-		'.characterChoiceResultContainer'
-	);
+	console.log('Inside resetMessage()');
+	// const characterChoiceResultContainer = document.querySelector(
+	// 	'.characterChoiceResultContainer'
+	// );
+	// characterChoiceResultContainer.style.display = 'block';
 
-	setTimeout(function () {
-		characterChoiceResultContainer.style.display = 'none';
-	}, 5000);
+	const timerID = setTimeout(function () {
+		console.log('Inside timeOUt');
+		// characterChoiceResultContainer.style.display = 'none';
+		return 'test';
+	}, 2000);
+
+	console.log({ timerID });
+	// console.log('Going to display block');
+
+	// clearTimeout(timerID);
 }
 
 function formatTime(time) {

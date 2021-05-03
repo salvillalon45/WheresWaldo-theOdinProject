@@ -72,7 +72,11 @@ function Header(props) {
 									id='timer'
 									// className={classes.title}
 								>
-									<Timer isGameOver={isGameOver} />
+									<Timer
+										timer={props.timer}
+										handleSetTimer={props.handleSetTimer}
+										isGameOver={isGameOver}
+									/>
 								</Typography>
 							</div>
 						</Toolbar>

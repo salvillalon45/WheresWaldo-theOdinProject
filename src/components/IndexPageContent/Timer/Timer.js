@@ -17,22 +17,22 @@ import { formatTime } from '../../../util/gameUtil';
 // -----------------------------------------------
 
 function Timer(props) {
-	const { isGameOver } = props;
+	const { isGameOver, timer } = props;
 
 	React.useEffect(() => {
-		console.log('INSIDE TIMER USE EFFECT()');
 		let interval;
 
 		if (isGameOver === 1) {
 			// Game Started! Start the timer
 			// We use setInterval since we wants this to happen every second
 			interval = setInterval(() => {
-				setTimer(timer => timer + 1);
+				// setTimer(timer => timer + 1);
+				props.handleSetTimer(1);
 			}, 1000);
 		} else if (isGameOver === 2) {
 			// Player finished
 			clearInterval(interval);
-			setTimer(0);
+			props.handleSetTimer(0);
 		}
 
 		return () => {

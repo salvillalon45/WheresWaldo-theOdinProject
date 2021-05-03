@@ -24,9 +24,12 @@ function Dropdown(props) {
 	}
 
 	function renderDropdownItems() {
-		return props.characters.map(character => {
+		return props.characters.map((character, index) => {
 			return (
-				<li onClick={event => handleCharacterChoice(event, character)}>
+				<li
+					key={index}
+					onClick={event => handleCharacterChoice(event, character)}
+				>
 					{character}
 				</li>
 			);
