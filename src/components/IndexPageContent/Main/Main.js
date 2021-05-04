@@ -29,103 +29,62 @@ import {
 } from '../../../util/gameUtil';
 // -----------------------------------------------
 
-function Main(props) {
+function Main() {
 	const [showDropdown, setShowDropdown] = React.useState(false);
 	const [dbCoords, setDBCoords] = React.useState(null);
 	const [styleCoords, setStyleCoords] = React.useState([]);
 	const [userCoords, setUserCoords] = React.useState([]);
 	const [userCharacterChoice, setUserCharacterChoice] = React.useState('');
 	const [characterSelected, setCharacterSelect] = React.useState(false);
-	const [choiceStatus, setChoiceStatus] = React.useState(false);
 	const [open, setOpen] = React.useState(false);
 	const [characters, setCharacters] = React.useState([]);
 	const [gameStatus, setGameStatus] = React.useState(0);
 	const [isGameOver, setIsGameOver] = React.useState('');
 	const [timer, setTimer] = React.useState(0);
-
-	function handleUserCharacterChoice(userInput) {
-		setUserCharacterChoice(userInput);
-		setCharacterSelect(!characterSelected);
-		setShowDropdown(!showDropdown);
-	}
+	const [popUpFlag, setPopUpFlag] = React.useState(false);
 
 	function handleClick(event) {
-		// print('Inside handleClick');
 		setShowDropdown(!showDropdown);
-		// let elem = document
-		// 	.querySelector('.gameImageContainer')
-		// 	.getBoundingClientRect();
-		// let top = elem.top + window.pageYOffset;
-		// let right = elem.right + window.pageXOffset;
-		// let bottom = elem.bottom + window.pageYOffset;
-		// let left = elem.left + window.pageXOffset;
-		// console.log({ top, right, bottom, left });
-		// console.log(window);
-		// console.log(window.innerWidth);]
 		const { pageX, pageY } = event;
-		// console.log({ pageX, pageY });
-
 		const x = Math.round((pageX / window.innerWidth) * 100);
 		const y = Math.round((pageY / window.innerWidth) * 100);
+		// const coords = `x: ${Math.round(
+		// 	(x / window.innerWidth) * 100
+		// )}, y: ${Math.round((y / window.innerWidth) * 100)}`;
 		setUserCoords([x, y]);
-		// console.log({ x, y });
-
 		setStyleCoords([pageX, pageY]);
 	}
 
 	function renderCharacterChoiceResult() {
 		console.log('Inside renderCharacterChoiceResult');
-		let result = '';
-		// console.log('INside renderCharacterChoiceResult()');
-		// console.log({ choiceStatus });
-		// console.log({ userCharacterChoice });
-		// if (choiceStatus) {
-		// 	// console.log('GOing to show cp with character!');
-		// 	result = (
-		// 		<CharacterChoiceResult
-		// 			userCharacterChoice={userCharacterChoice}
-		// 		/>
-		// 	);
-		// } else if (choiceStatus === false && userCharacterChoice) {
-		// 	// console.log('Going to show try again');
-		// 	result = <CharacterChoiceResult userCharacterChoice={''} />;
-		// }
-
-		// return result;
 
 		return (
-			<CharacterChoiceResult
-				characterSelected={characterSelected}
-				userCharacterChoice={userCharacterChoice}
-			/>
+			<CharacterChoiceResult userCharacterChoice={userCharacterChoice} />
 		);
 	}
 
-	function checkCharacterChoice() {
-		console.log('Insider checkCharacterChoice');
-		console.log({ characterSelected });
-		if (characterSelected) {
-			// print('Character has been selected');
+	function checkCharacterChoice(userInput) {
+		print('Character has been selected');
+		console.log('userCharacterChoice:: ' + userInput);
+		const result = checkInputCoords(userCoords, userInput, dbCoords);
 
-			// console.log('userCharacterChoice:: ' + userCharacterChoice);
-			const result = checkInputCoords(
-				userCoords,
-				userCharacterChoice,
-				dbCoords
-			);
+		console.log('RESULT ' + result);
 
-			// console.log('RESULT ' + result);
-
-			if (result) {
-				// setChoiceStatus(true);
-				removeCharacter(userCharacterChoice, characters);
-			} else {
-				// setChoiceStatus(false);
-			}
-
-			// setCharacterSelect(!characterSelected);
-			// // setUserCharacterChoice('');
+		if (result) {
+			console.log('removing character');
+			removeCharacter(userInput, characters);
+			setUserCharacterChoice(userInput);
+		} else {
+			setUserCharacterChoice('');
 		}
+
+		setPopUpFlag(!popUpFlag);
+	}
+
+	function handleUserCharacterChoice(userInput) {
+		setCharacterSelect(!characterSelected);
+		setShowDropdown(!showDropdown);
+		checkCharacterChoice(userInput);
 	}
 
 	function handleSetTimer(stopCheck) {
@@ -137,7 +96,6 @@ function Main(props) {
 	}
 
 	function handleIsGameOver(value) {
-		// console.log('Inside handleGameOVer');
 		setIsGameOver(value);
 	}
 
@@ -146,7 +104,6 @@ function Main(props) {
 	}
 
 	function handleModalOpen() {
-		// console.log('GOING TO OPEn');
 		setOpen(true);
 	}
 
@@ -166,11 +123,14 @@ function Main(props) {
 	}, []);
 
 	React.useEffect(() => {
-		console.log('Here');
+		console.log('Choice Timer Use Effect ');
+		console.log({ characterSelected });
 		const choiceTimer = setTimeout(() => {
 			if (characterSelected) {
+				console.log('GOing to reset');
 				setCharacterSelect(!characterSelected);
 				setUserCharacterChoice('');
+				setPopUpFlag(!popUpFlag);
 			}
 		}, [3000]);
 
@@ -178,16 +138,9 @@ function Main(props) {
 	}, [characterSelected]);
 
 	React.useEffect(() => {
-		checkCharacterChoice();
-	});
-
-	React.useEffect(() => {
-		// console.log('USE EFFECT FOR GAME OVER CHECK');
-		// console.log(characters.length);
-
 		if (characters.length === 0 && dbCoords) {
-			// console.log('FINISHED');
-			// console.log('What is ending timer:: ' + timer);
+			console.log('Game over!');
+			console.log('timer:: ' + timer);
 			handleIsGameOver(true);
 			handleModalOpen();
 			setGameStatus(1);
@@ -216,7 +169,7 @@ function Main(props) {
 							handleGameStatus={handleGameStatus}
 						/>
 
-						{characterSelected && renderCharacterChoiceResult()}
+						{popUpFlag && renderCharacterChoiceResult()}
 
 						{showDropdown && (
 							<Dropdown

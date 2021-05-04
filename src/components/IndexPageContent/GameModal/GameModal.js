@@ -43,6 +43,15 @@ function GameModal(props) {
 			result = (
 				<>
 					<p>Welcome to Where's Waldow!</p>
+					<p>Tag these characters as fast as you can!</p>
+					<p>
+						Scroll through the image to find the correct character.
+					</p>
+					<p>
+						Click the character and choose the correct name. You
+						will be timed and your score will be recorded, so move
+						fast!
+					</p>
 
 					<button
 						type='button'
@@ -54,7 +63,7 @@ function GameModal(props) {
 			);
 		} else if (gameStatus === 1) {
 			result = (
-				<>
+				<form>
 					<p>You found all characters! Submit your score!</p>
 
 					<button
@@ -63,7 +72,7 @@ function GameModal(props) {
 					>
 						Submit
 					</button>
-				</>
+				</form>
 			);
 		} else {
 			result = (
