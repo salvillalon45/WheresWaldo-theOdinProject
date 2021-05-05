@@ -9,7 +9,7 @@ async function getCoordsFromDB(level) {
 	return snapshot.val();
 }
 
-function pushToDatabase(userName) {
+function pushToDatabase(userName, timer) {
 	console.log('Inside pushToDatabase');
 	console.log(userName);
 
@@ -20,7 +20,7 @@ function pushToDatabase(userName) {
 	console.log({ newReference });
 	newReference.set({
 		userName: userName,
-		time: '00:11:11'
+		time: timer
 	});
 
 	var path = newReference.toString();

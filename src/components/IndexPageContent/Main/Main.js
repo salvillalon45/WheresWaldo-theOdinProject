@@ -115,7 +115,7 @@ function Main() {
 		const result = await getCoordsFromDB(1);
 		setDBCoords(result);
 		setCharacters(Object.keys(result));
-		setCharacters([]);
+		// setCharacters([]);
 	}
 
 	React.useEffect(async () => {
@@ -142,9 +142,9 @@ function Main() {
 		if (characters.length === 0 && dbCoords) {
 			console.log('Game over!');
 			console.log('timer:: ' + timer);
-			handleIsGameOver(true);
 			handleModalOpen();
 			setGameStatus(1);
+			handleIsGameOver(true);
 		}
 	}, [characters.length !== 0]);
 
@@ -168,6 +168,7 @@ function Main() {
 							handleIsGameOver={handleIsGameOver}
 							gameStatus={gameStatus}
 							handleGameStatus={handleGameStatus}
+							timer={timer}
 						/>
 
 						{popUpFlag && renderCharacterChoiceResult()}

@@ -25,7 +25,7 @@ import { pushToDatabase } from '../../../util/firebaseUtil';
 // -----------------------------------------------
 
 function GameModal(props) {
-	const { gameStatus } = props;
+	const { gameStatus, timer } = props;
 	const [userName, setUserName] = React.useState('');
 
 	function handleModalAction(event) {
@@ -37,7 +37,7 @@ function GameModal(props) {
 			props.handleIsGameOver(1);
 			props.handleModalClose();
 		} else if (gameStatus === 1) {
-			pushToDatabase(userName);
+			pushToDatabase(userName, timer);
 			props.handleIsGameOver(2);
 			props.handleGameStatus(2);
 		}
