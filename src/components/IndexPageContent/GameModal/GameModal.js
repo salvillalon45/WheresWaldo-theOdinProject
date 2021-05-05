@@ -14,26 +14,38 @@ import * as React from 'react';
 
 // Material UI
 import Modal from '@material-ui/core/Modal';
+import TextField from '@material-ui/core/TextField';
 
 //  Styled Components
 import styled from 'styled-components';
 import { ModalContent } from './styling';
+
+// Util
+import { pushToDatabase } from '../../../util/firebaseUtil';
 // -----------------------------------------------
 
 function GameModal(props) {
 	const { gameStatus } = props;
+	const [userName, setUserName] = React.useState('');
 
 	function handleModalAction(event) {
 		event.stopPropagation();
 		event.preventDefault();
+		console.log({ userName });
 
 		if (gameStatus === 0) {
 			props.handleIsGameOver(1);
 			props.handleModalClose();
 		} else if (gameStatus === 1) {
+			pushToDatabase(userName);
 			props.handleIsGameOver(2);
 			props.handleGameStatus(2);
 		}
+	}
+
+	function handleChange(event) {
+		console.log(event.target.value);
+		setUserName(event.target.value);
 	}
 
 	function renderModalContent() {
@@ -66,8 +78,15 @@ function GameModal(props) {
 				<form>
 					<p>You found all characters! Submit your score!</p>
 
+					<TextField
+						id='outlined-basic'
+						label='Enter Your Name'
+						variant='outlined'
+						onChange={event => handleChange(event)}
+					/>
+
 					<button
-						type='button'
+						type='submit'
 						onClick={event => handleModalAction(event)}
 					>
 						Submit

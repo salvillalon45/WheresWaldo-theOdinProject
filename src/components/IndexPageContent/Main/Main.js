@@ -115,6 +115,7 @@ function Main() {
 		const result = await getCoordsFromDB(1);
 		setDBCoords(result);
 		setCharacters(Object.keys(result));
+		setCharacters([]);
 	}
 
 	React.useEffect(async () => {
