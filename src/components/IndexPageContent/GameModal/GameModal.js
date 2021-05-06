@@ -15,6 +15,13 @@ import * as React from 'react';
 // Material UI
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 //  Styled Components
 import styled from 'styled-components';
@@ -25,7 +32,7 @@ import { pushToDatabase } from '../../../util/firebaseUtil';
 // -----------------------------------------------
 
 function GameModal(props) {
-	const { gameStatus, timer } = props;
+	const { gameStatus, timer, userResultsDB } = props;
 	const [userName, setUserName] = React.useState('');
 
 	function handleModalAction(event) {
@@ -46,6 +53,40 @@ function GameModal(props) {
 	function handleChange(event) {
 		console.log(event.target.value);
 		setUserName(event.target.value);
+	}
+
+	function buildTableRows() {
+		return Object.entries(userResultsDB).map((userResult, index) => {
+			const { userName, time } = userResult[1];
+
+			return (
+				<TableRow key={index}>
+					<TableCell align='center' component='th' scope='row'>
+						{userName}
+					</TableCell>
+
+					<TableCell align='center'>{time}</TableCell>
+				</TableRow>
+			);
+		});
+	}
+
+	function showTable() {
+		return (
+			<TableContainer component={Paper}>
+				<Table aria-label='simple table'>
+					<TableHead>
+						<TableRow>
+							<TableCell align='center'>User Name</TableCell>
+
+							<TableCell align='center'>Time</TableCell>
+						</TableRow>
+					</TableHead>
+
+					<TableBody>{buildTableRows()}</TableBody>
+				</Table>
+			</TableContainer>
+		);
 	}
 
 	function renderModalContent() {
@@ -91,12 +132,18 @@ function GameModal(props) {
 					>
 						Submit
 					</button>
+
+					<p>High Scores</p>
+					{showTable()}
 				</form>
 			);
 		} else {
 			result = (
 				<>
 					<p>Thanks for playing!</p>
+
+					<p>High Scores</p>
+					{showTable()}
 				</>
 			);
 		}

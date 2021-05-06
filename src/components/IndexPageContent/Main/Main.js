@@ -21,11 +21,15 @@ import Header from '../../Layout/Header';
 import Footer from '../../Layout/Footer';
 
 // Util
-import { getCoordsFromDB } from '../../../util/firebaseUtil';
+import {
+	getCoordsFromDB,
+	getUserResultsFromDB
+} from '../../../util/firebaseUtil';
 import {
 	checkInputCoords,
 	print,
-	removeCharacter
+	removeCharacter,
+	formatTime
 } from '../../../util/gameUtil';
 // -----------------------------------------------
 
@@ -42,6 +46,7 @@ function Main() {
 	const [isGameOver, setIsGameOver] = React.useState('');
 	const [timer, setTimer] = React.useState(0);
 	const [popUpFlag, setPopUpFlag] = React.useState(false);
+	const [userResultsDB, setUserResultsDB] = React.useState([]);
 
 	function handleClick(event) {
 		setShowDropdown(!showDropdown);
@@ -115,7 +120,9 @@ function Main() {
 		const result = await getCoordsFromDB(1);
 		setDBCoords(result);
 		setCharacters(Object.keys(result));
-		// setCharacters([]);
+
+		const userResults = await getUserResultsFromDB();
+		setUserResultsDB(userResults);
 	}
 
 	React.useEffect(async () => {
@@ -168,7 +175,8 @@ function Main() {
 							handleIsGameOver={handleIsGameOver}
 							gameStatus={gameStatus}
 							handleGameStatus={handleGameStatus}
-							timer={timer}
+							timer={formatTime(timer)}
+							userResultsDB={userResultsDB}
 						/>
 
 						{popUpFlag && renderCharacterChoiceResult()}

@@ -10,11 +10,7 @@ async function getCoordsFromDB(level) {
 }
 
 function pushToDatabase(userName, timer) {
-	console.log('Inside pushToDatabase');
-	console.log(userName);
-
 	const reference = firebase.database().ref('userResults');
-	console.log(reference.key);
 
 	const newReference = reference.push();
 	console.log({ newReference });
@@ -22,9 +18,12 @@ function pushToDatabase(userName, timer) {
 		userName: userName,
 		time: timer
 	});
-
-	var path = newReference.toString();
-	console.log({ path });
 }
 
-export { getCoordsFromDB, pushToDatabase };
+async function getUserResultsFromDB() {
+	const snapshot = await firebase.database().ref('userResults').once('value');
+
+	return snapshot.val();
+}
+
+export { getCoordsFromDB, pushToDatabase, getUserResultsFromDB };
