@@ -6,4 +6,23 @@
 
 .footerContainer {
 	flex-shrink: 0;
+	margin-top: -27px;
+
+	.footerInfoContainer {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 20px;
+
+		.footerInfo {
+			a {
+				color: var(--white);
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+			a:hover {
+				color: var(--babyBlue);
+			}
+		}
+	}
 }

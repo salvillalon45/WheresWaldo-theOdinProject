@@ -1,0 +1,48 @@
+// -----------------------------------------------
+//
+// Styling for Game Modal
+//
+// -----------------------------------------------
+
+.modalContentContainer {
+	padding: 90px;
+
+	.formInputContainer {
+		#submitButton {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.resultsContainer {
+		margin-top: 10px;
+	}
+}
+
+.MuiInputBase-input {
+	border: var(--babyBlue) 1px solid !important;
+	color: var(--babyBlue) !important;
+}
+
+.MuiInputLabel-outlined,
+.MuiFormLabel-root.Mui-focused {
+	color: var(--babyBlue) !important;
+}
+
+.MuiTableCell-stickyHeader {
+	background-color: var(--babyBlue) !important;
+}
+
+th.MuiTableCell-root.MuiTableCell-head.MuiTableCell-alignCenter.MuiTableCell-stickyHeader {
+	color: var(--darkBlue) !important;
+	font-weight: bold;
+	font-family: $lato;
+}
+
+.MuiPaper-root.MuiTableContainer-root.MuiPaper-elevation1.MuiPaper-rounded {
+	max-height: 300px;
+}
+
+td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-alignCenter {
+	font-weight: bold;
+}

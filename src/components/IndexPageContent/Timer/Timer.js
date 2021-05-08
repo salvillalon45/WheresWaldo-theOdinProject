@@ -1,8 +1,7 @@
 // -----------------------------------------------
 //
-// GameImage -> GameImage.js
-// Desc: Game Image component that will handle
-// displaying image and handling clicks
+// Timer -> Timer.js
+// Desc: Handling Timer
 //
 // -----------------------------------------------
 
@@ -26,7 +25,6 @@ function Timer(props) {
 			// Game Started! Start the timer
 			// We use setInterval since we wants this to happen every second
 			interval = setInterval(() => {
-				// setTimer(timer => timer + 1);
 				props.handleSetTimer(1);
 			}, 1000);
 		} else if (isGameOver === 2) {

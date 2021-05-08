@@ -39,38 +39,24 @@ function removeCharacter(userCharacterChoice, characters) {
 	characters.splice(characters.indexOf(userCharacterChoice), 1);
 }
 
-function resetMessage() {
-	console.log('Inside resetMessage()');
-	// const characterChoiceResultContainer = document.querySelector(
-	// 	'.characterChoiceResultContainer'
-	// );
-	// characterChoiceResultContainer.style.display = 'block';
-
-	const timerID = setTimeout(function () {
-		console.log('Inside timeOUt');
-		// characterChoiceResultContainer.style.display = 'none';
-		return 'test';
-	}, 2000);
-
-	console.log({ timerID });
-	// console.log('Going to display block');
-
-	// clearTimeout(timerID);
-}
-
 function formatTime(time) {
 	// slice(-2) extracts the last two elements in the sequence.
-	// console.log({ time });
 	const seconds = `0${Math.round(time % 60)}`.slice(-2);
-	// console.log(`0${Math.round(time % 60)}`);
-	// console.log({ seconds });
 	const minutes = `${Math.floor(time / 60)}`;
-	// console.log({ minutes });
 	const showMinutes = `0${minutes % 60}`.slice(-2);
-	// console.log({ showMinutes });
 	const hours = `0${Math.floor(time / 3600)}`.slice(-2);
-	// console.log({ hours });
 	return `${hours}:${showMinutes}:${seconds}`;
 }
 
-export { checkInputCoords, print, removeCharacter, resetMessage, formatTime };
+function orderUserResults(userResults) {
+	// Help from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+	return userResults.sort((a, b) => (a.time > b.time ? 1 : -1));
+}
+
+export {
+	orderUserResults,
+	checkInputCoords,
+	print,
+	removeCharacter,
+	formatTime
+};

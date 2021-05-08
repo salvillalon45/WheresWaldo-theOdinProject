@@ -11,24 +11,16 @@
 // React
 import * as React from 'react';
 
-// Components
-import Header from './Header';
-import Footer from './Footer';
-
 // Styling
 import '../../styles/global.scss';
 // -----------------------------------------------
 
 function Layout(props) {
-	const { id, children } = props;
+	const { children } = props;
 
 	return (
 		<>
-			{/* <Header /> */}
-
 			<>{children}</>
-
-			{/* <Footer /> */}
 		</>
 	);
 }

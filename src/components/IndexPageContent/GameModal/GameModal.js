@@ -24,11 +24,22 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 //  Styled Components
-import styled from 'styled-components';
-import { ModalContent } from './styling';
+import {
+	ModalContent,
+	CharactersContainer,
+	CharacterImage,
+	Character,
+	FormInput
+} from './styling';
+import { GameButton } from '../../../styles/globalStyles';
 
 // Util
 import { pushToDatabase } from '../../../util/firebaseUtil';
+
+// Images
+import Aang from '../../../images/aang.png';
+import Finn from '../../../images/finn.jpg';
+import Pokeball from '../../../images/pokeball.png';
 // -----------------------------------------------
 
 function GameModal(props) {
@@ -38,7 +49,6 @@ function GameModal(props) {
 	function handleModalAction(event) {
 		event.stopPropagation();
 		event.preventDefault();
-		console.log({ userName });
 
 		if (gameStatus === 0) {
 			props.handleIsGameOver(1);
@@ -51,7 +61,6 @@ function GameModal(props) {
 	}
 
 	function handleChange(event) {
-		console.log(event.target.value);
 		setUserName(event.target.value);
 	}
 
@@ -73,8 +82,8 @@ function GameModal(props) {
 
 	function showTable() {
 		return (
-			<TableContainer component={Paper}>
-				<Table aria-label='simple table'>
+			<TableContainer style={{ maxHeight: 300 }} component={Paper}>
+				<Table stickyHeader aria-label='simple table'>
 					<TableHead>
 						<TableRow>
 							<TableCell align='center'>User Name</TableCell>
@@ -95,7 +104,7 @@ function GameModal(props) {
 		if (gameStatus === 0) {
 			result = (
 				<>
-					<p>Welcome to Where's Waldow!</p>
+					<p className='xxLarge bold'>Welcome to Where's Waldow!</p>
 					<p>Tag these characters as fast as you can!</p>
 					<p>
 						Scroll through the image to find the correct character.
@@ -106,44 +115,81 @@ function GameModal(props) {
 						fast!
 					</p>
 
-					<button
+					<CharactersContainer>
+						<Character>
+							<CharacterImage
+								src={Aang}
+								alt='Aang from Avatar: The Last Airbender'
+							/>
+							<p>Aang</p>
+						</Character>
+
+						<Character>
+							<CharacterImage
+								src={Finn}
+								alt='Finn from Adventure Timer'
+							/>
+							<p>Finn</p>
+						</Character>
+
+						<Character>
+							<CharacterImage
+								src={Pokeball}
+								alt='Pokeball from Pokemon'
+							/>
+							<p>Pokeball</p>
+						</Character>
+					</CharactersContainer>
+
+					<GameButton
 						type='button'
 						onClick={event => handleModalAction(event)}
 					>
 						Start Game
-					</button>
+					</GameButton>
 				</>
 			);
 		} else if (gameStatus === 1) {
 			result = (
 				<form>
-					<p>You found all characters! Submit your score!</p>
+					<p className='xLarge bold'>
+						You found all characters! <br /> Submit your score!
+					</p>
 
-					<TextField
-						id='outlined-basic'
-						label='Enter Your Name'
-						variant='outlined'
-						onChange={event => handleChange(event)}
-					/>
+					<p className='large'>Your time: {timer}</p>
 
-					<button
-						type='submit'
-						onClick={event => handleModalAction(event)}
-					>
-						Submit
-					</button>
+					<FormInput className='formInputContainer'>
+						<TextField
+							id='outlined-basic'
+							label='Enter Your Name'
+							variant='outlined'
+							onChange={event => handleChange(event)}
+						/>
 
-					<p>High Scores</p>
-					{showTable()}
+						<GameButton
+							type='submit'
+							id='submitButton'
+							onClick={event => handleModalAction(event)}
+						>
+							Submit
+						</GameButton>
+					</FormInput>
+
+					<div className='resultsContainer'>
+						<p className='xxLarge bold'>High Scores</p>
+						{showTable()}
+					</div>
 				</form>
 			);
 		} else {
 			result = (
 				<>
-					<p>Thanks for playing!</p>
+					<p className='xxLarge bold'>Thanks for playing!</p>
 
-					<p>High Scores</p>
-					{showTable()}
+					<div className='resultsContainer'>
+						<p className='xxLarge bold'>High Scores</p>
+						{showTable()}
+					</div>
 				</>
 			);
 		}
@@ -162,7 +208,9 @@ function GameModal(props) {
 				aria-labelledby='simple-modal-title'
 				aria-describedby='simple-modal-description'
 			>
-				<ModalContent>{renderModalContent()}</ModalContent>
+				<ModalContent className='modalContentContainer'>
+					{renderModalContent()}
+				</ModalContent>
 			</Modal>
 		</div>
 	);

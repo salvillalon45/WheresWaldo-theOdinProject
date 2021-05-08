@@ -17,12 +17,6 @@ import Timer from '../../IndexPageContent/Timer';
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-
-// Images
-import Waldo from '../../../images/waldo.jpg';
-import Wenda from '../../../images/wenda.jpg';
 // -----------------------------------------------
 
 function Header(props) {
@@ -34,50 +28,18 @@ function Header(props) {
 				<div className='headerContainer'>
 					<AppBar position='static'>
 						<Toolbar>
-							<div className='charactersContainer'>
-								<div className='character'>
-									<Avatar
-										src={Waldo}
-										variant='square'
-										className='square'
-									/>
-
-									<Typography
-										variant='h6'
-										// className={classes.title}
-									>
-										Waldo
-									</Typography>
-								</div>
-
-								<div className='character'>
-									<Avatar
-										src={Wenda}
-										variant='square'
-										className='square'
-									/>
-
-									<Typography
-										variant='h6'
-										// className={classes.title}
-									>
-										Wenda
-									</Typography>
-								</div>
+							<div className='logoContainer'>
+								<h1>The Odin Project: Where's Waldo</h1>
 							</div>
 
 							<div className='timeContainer'>
-								<Typography
-									variant='h6'
-									id='timer'
-									// className={classes.title}
-								>
+								<p className='xLarge'>
 									<Timer
 										timer={props.timer}
 										handleSetTimer={props.handleSetTimer}
 										isGameOver={isGameOver}
 									/>
-								</Typography>
+								</p>
 							</div>
 						</Toolbar>
 					</AppBar>

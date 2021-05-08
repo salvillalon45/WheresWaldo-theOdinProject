@@ -13,7 +13,7 @@
 import * as React from 'react';
 
 //  Styled Components
-import styled from 'styled-components';
+import { DropdownItem, DropdownContainer, DropdownMenu } from './styling';
 // -----------------------------------------------
 
 function Dropdown(props) {
@@ -26,61 +26,26 @@ function Dropdown(props) {
 	function renderDropdownItems() {
 		return props.characters.map((character, index) => {
 			return (
-				<li
+				<DropdownItem
 					key={index}
 					onClick={event => handleCharacterChoice(event, character)}
 				>
 					{character}
-				</li>
+				</DropdownItem>
 			);
 		});
 	}
 
-	// const Li = styled.Li`
-	// 	font-size: 1.5em;
-	// 	text-align: center;
-	// 	color: palevioletred;
-	// 	display: flex;
-	// 	position: fixed;
-	// 	padding-top: 6px;
-	// 	padding-bottom: 6px;
-	// 	padding-left: 8px;
-	// 	padding-right: 8px;
-	// 	border-radius: 10px;
-	// 	left: 50%;
-	// 	top: 12%;
-	// 	transform: translate(-50%, 0);
-	// 	font-size: calc((0.2em + 1vmin) + (0.2em + 1vmax));
-	// 	background: #22222c;
-	// `;
-
 	return (
-		<div
+		<DropdownContainer
 			className='dropdownContainer'
 			style={{
 				left: props.coords[0],
 				top: props.coords[1]
 			}}
 		>
-			<ul>
-				{/* <li onClick={event => handleCharacterChoice(event, 'fin')}>
-					Fin
-				</li>
-
-				<li onClick={event => handleCharacterChoice(event, 'pokeball')}>
-					Pokeball
-				</li>
-
-				<li
-					onClick={event =>
-						handleCharacterChoice(event, 'megGriffin')
-					}
-				>
-					Meg Griffin
-				</li> */}
-				{renderDropdownItems()}
-			</ul>
-		</div>
+			<DropdownMenu>{renderDropdownItems()}</DropdownMenu>
+		</DropdownContainer>
 	);
 }
 

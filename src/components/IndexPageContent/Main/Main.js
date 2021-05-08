@@ -53,30 +53,20 @@ function Main() {
 		const { pageX, pageY } = event;
 		const x = Math.round((pageX / window.innerWidth) * 100);
 		const y = Math.round((pageY / window.innerWidth) * 100);
-		// const coords = `x: ${Math.round(
-		// 	(x / window.innerWidth) * 100
-		// )}, y: ${Math.round((y / window.innerWidth) * 100)}`;
 		setUserCoords([x, y]);
 		setStyleCoords([pageX, pageY]);
 	}
 
 	function renderCharacterChoiceResult() {
-		console.log('Inside renderCharacterChoiceResult');
-
 		return (
 			<CharacterChoiceResult userCharacterChoice={userCharacterChoice} />
 		);
 	}
 
 	function checkCharacterChoice(userInput) {
-		print('Character has been selected');
-		console.log('userCharacterChoice:: ' + userInput);
 		const result = checkInputCoords(userCoords, userInput, dbCoords);
 
-		console.log('RESULT ' + result);
-
 		if (result) {
-			console.log('removing character');
 			removeCharacter(userInput, characters);
 			setUserCharacterChoice(userInput);
 		} else {
@@ -131,11 +121,8 @@ function Main() {
 	}, []);
 
 	React.useEffect(() => {
-		console.log('Choice Timer Use Effect ');
-		console.log({ characterSelected });
 		const choiceTimer = setTimeout(() => {
 			if (characterSelected) {
-				console.log('GOing to reset');
 				setCharacterSelect(!characterSelected);
 				setUserCharacterChoice('');
 				setPopUpFlag(!popUpFlag);
@@ -147,8 +134,6 @@ function Main() {
 
 	React.useEffect(() => {
 		if (characters.length === 0 && dbCoords) {
-			console.log('Game over!');
-			console.log('timer:: ' + timer);
 			handleModalOpen();
 			setGameStatus(1);
 			handleIsGameOver(true);

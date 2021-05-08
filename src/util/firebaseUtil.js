@@ -1,4 +1,5 @@
 import firebase from 'gatsby-plugin-firebase';
+import { orderUserResults } from './gameUtil';
 
 async function getCoordsFromDB(level) {
 	const snapshot = await firebase
@@ -11,9 +12,8 @@ async function getCoordsFromDB(level) {
 
 function pushToDatabase(userName, timer) {
 	const reference = firebase.database().ref('userResults');
-
 	const newReference = reference.push();
-	console.log({ newReference });
+
 	newReference.set({
 		userName: userName,
 		time: timer
@@ -23,7 +23,7 @@ function pushToDatabase(userName, timer) {
 async function getUserResultsFromDB() {
 	const snapshot = await firebase.database().ref('userResults').once('value');
 
-	return snapshot.val();
+	return orderUserResults(Object.values(snapshot.val()));
 }
 
 export { getCoordsFromDB, pushToDatabase, getUserResultsFromDB };
