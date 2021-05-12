@@ -1,8 +1,8 @@
 // -----------------------------------------------
 //
-// GameImage -> GameImage.js
-// Desc: Game Image component that will handle
-// displaying image and handling clicks
+// Main -> Main.js
+// Desc: Main parent component to hold all state that will
+// be used by child components
 //
 // -----------------------------------------------
 

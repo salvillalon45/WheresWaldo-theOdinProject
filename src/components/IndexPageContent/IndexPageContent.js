@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
 // IndexPageContent -> IndexPageContent.js
-// Desc: Main component
+// Desc: Renders Main component
 //
 // -----------------------------------------------
 
@@ -12,13 +12,13 @@
 import * as React from 'react';
 
 // Components
-import GameImage from './Main';
+import Main from './Main';
 // -----------------------------------------------
 
 function IndexPageContent() {
 	return (
 		<>
-			<GameImage />
+			<Main />
 		</>
 	);
 }

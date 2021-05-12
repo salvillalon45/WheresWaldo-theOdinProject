@@ -35,7 +35,17 @@
 
 ## Styling
 
-1. Styled components came in handy. It made it easier so that I do not have to create an entire HTML button and create classes for it. By doing a Styled component it reduces the amount of code to write! Then if you need to specify something about a button you can just add a class to it and add the specific css that only that button need. Below is the code snippet of my button
+1. Working with Material UI is great, but when you try to edit the styling of the Material UI Component it is kinda of difficult. Trying to edit the css looked liked this. Maybe there is a better way of doing this. I need to check the documentation more
+
+```
+.MuiInputLabel-outlined,
+.MuiFormLabel-root.Mui-focused {
+	color: var(--babyBlue) !important;
+}
+
+```
+
+2. Styled components came in handy. It made it easier so that I do not have to create an entire HTML button and create classes for it. By doing a Styled component it reduces the amount of code to write! Then if you need to specify something about a button you can just add a class to it and add the specific css that only that button need. Below is the code snippet of my button
 
 ```jsx
 const GameButton = styled.button`
@@ -88,15 +98,50 @@ const Character = styled.div`
 -   I learned how to setup a Gatsby project with firebase! It was really simple thanks to this plugin (gatsby-plugin-firebase)[[https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/](https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/)]
 -   I practiced using Styled Components!
 -   I learned how to use MaterialUI to set up a navbar and footer components
--   I learned how to get the coordinates of a click on the page, it involves using the event.
+-   I learned how to get the coordinates of a click on the page, it involves using the event. Took advantage of this to help render the dropdown at the spot the user jus clicked on
 -   I learned more about setTimeout and setInterval. I finally learned the difference between the two. - setInterval is used when you want something done at specified intervals - setTimeout is used when you want something to happen after a specifed number of milliseconds
-    <br>
+-   Since the entire image already had a onClick function, when I tried to create the dropdown and let the user click the character from the dropdown it was actually doing a double click.
+
+    -   To prevent this from happening, I used event.stopPropagation and event.preventDefault. Now it will associate the click with the dropdown only and not with the image. Example:
+
+    ```
+    function handleCharacterChoice(event, character) {
+    	event.stopPropagation();
+    	event.preventDefault();
+    	props.handleUserCharacterChoice(character);
+    }
+
+    function renderDropdownItems() {
+    	return props.characters.map((character, index) => {
+    		return (
+    			<DropdownItem
+    				key={index}
+    				onClick={event => handleCharacterChoice(event, character)}
+    			>
+    				{character}
+    			</DropdownItem>
+    		);
+    	});
+    }
+    ```
+
+-   Learned how to ordered elements from least to greatest. I needed to do this to arrange the scores from least time to greatest time taken to find the characters.
+
+```
+function orderUserResults(userResults) {
+	// Help from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+	return userResults.sort((a, b) => (a.time > b.time ? 1 : -1));
+}
+```
+
+<br>
 
 ## Technologies:
 
 -   React
 -   React Bootstrap
--   Material UI for Icons
+-   Material UI
+-   Styled Components
 -   Dribble
 -   Sass
 -   Surge.sh

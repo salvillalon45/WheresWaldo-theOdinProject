@@ -1,3 +1,3 @@
-import GameImage from './Main';
+import Main from './Main';
 
-export default GameImage;
+export default Main;

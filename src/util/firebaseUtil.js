@@ -1,3 +1,10 @@
+// -----------------------------------------------
+//
+// util -> firebaseUtil.js
+// Desc: Functions to interact with Firebase Realtime DB
+//
+// -----------------------------------------------
+
 import firebase from 'gatsby-plugin-firebase';
 import { orderUserResults } from './gameUtil';
 
