@@ -27,7 +27,6 @@ import {
 } from '../../../util/firebaseUtil';
 import {
 	checkInputCoords,
-	print,
 	removeCharacter,
 	formatTime
 } from '../../../util/gameUtil';

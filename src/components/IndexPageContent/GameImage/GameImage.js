@@ -17,7 +17,7 @@ import Background from '../../../images/background.jpg';
 // -----------------------------------------------
 
 function GameImage() {
-	return <img src={Background} alt='image background' />;
+	return <img src={Background} alt='background' />;
 }
 
 export default GameImage;

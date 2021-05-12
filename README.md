@@ -1,100 +1,103 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# [The Odin Project: Javascript] - Project: Where's Waldo
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## Intro
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+-   This project was aimed as an introduction to using backend. I was familiar with Firebase, but I wanted to practice using Firebase with Gatsby
+-   You can find more on the project here: [The Odin Project - Where's Waldo](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/where-s-waldo-a-photo-tagging-app)
 
-## 🚀 Quick start
+### 📗 Fonts used
 
-1.  **Create a Gatsby site.**
+-   [Secular One](<[https://fonts.google.com/specimen/Secular+One?preview.text_type=custom&category=Sans+Serif&preview.size=59&thickness=6](https://fonts.google.com/specimen/Secular+One?preview.text_type=custom&category=Sans+Serif&preview.size=59&thickness=6)>)
+-   [Lato](<[https://fonts.google.com/specimen/Lato?preview.text=This sweatshirt offering&preview.text_type=custom&category=Sans+Serif&preview.size=59&thickness=6)>)
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+### 🎨 Color Reference
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+|  Color            |  Hex                                                                 |
+| ----------------- | -------------------------------------------------------------------- |
+|  Dark Blue        |  ![#0c2d48](https://via.placeholder.com/10/0c2d48?text=+) `#0c2d48`  |
+|  Baby Blue        |  ![#b1d4e0](https://via.placeholder.com/10/b1d4e0?text=+) `#b1d4e0`  |
+|  White            |  ![#fff](https://via.placeholder.com/10/fff?text=+) `#fff`           |
+|  Black            |  ![#000](https://via.placeholder.com/10/000?text=+) `#000`           |
 
-1.  **Start developing.**
+## Overall
 
-    Navigate into your new site’s directory and start it up.
+-   In this project I practice using Material UI and Styled Components. Material UI
+-   This project I learned how sometimes the framework that you use will help you out. For instance, I used Gatsby and this framework by having an overall layout that will be used on different pages. This is great so that you can have one layout that will be used for all pages! In this case, I wanted the header component to have the timer and that same timer needed to be passed down to the Main component. What I noticed is that this could not be done since Layout has no way of passing in to the designated page...
+-   What I needed was to have a Parent component that renders Header and the Main component. There I can pass down the time state variable to both of the components. This idea was not possible with having layouts with Gatsby. It made had to put Header and Footer inside Main.js instead of being in Layout.js.
+-   Also, when I was trying to push into the Database, I noticed that my push was going in but as null value. I knew that the code was right, what I had to change was read and write permissions.
+-   ### My biggest learning experience from this project
+    -   Is learning how to use Parent Components properly so that the parents handle the state
+    -   Do not let child components have state that will then have to be passed up to the parent. I was going to do this initially with my Timer.js component but this turned out to just make everything very difficult
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## Design
 
-1.  **Open the source code and start editing!**
+-   Design Inspiration Came From [JCarlosLucio](<[https://lucio-where-is-waldo.netlify.app/](https://lucio-where-is-waldo.netlify.app/)>)
 
-    Your site is now running at `http://localhost:8000`!
+## Styling
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+1. Styled components came in handy. It made it easier so that I do not have to create an entire HTML button and create classes for it. By doing a Styled component it reduces the amount of code to write! Then if you need to specify something about a button you can just add a class to it and add the specific css that only that button need. Below is the code snippet of my button
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+```jsx
+const GameButton = styled.button`
+	background: var(--babyBlue);
+	border: none;
+	padding: 11px;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	color: var(--darkBlue);
+`;
+```
 
-## 🧐 What's inside?
+2. I learned how to apply hovers in Styled Components
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+```jsx
+&:hover {
+	color: orange;
+}
+```
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+3. I did not know how to use Sass variables in Styled Components so I found this other work around. This will work until I learn how to use sass variables in styled components
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+```jsx
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+// IN global.scss I declare my variables
+// Color Variables
+// -----------------------------------------------
+:root {
+	--darkBlue: #0c2d48;
+	--babyBlue: #b1d4e0;
+	--white: #ffffff;
+	--black: black;
+}
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+// Now to use them I will do that following: use color: var(--black)
+const Character = styled.div`
+	background-color: var(--white);
+	border-radius: 20px;
+	padding: 20px;
+	color: var(--black);
+	font-weight: bold;
+`;
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+```
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## Development
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+-   Usually if I was trying to increment a counter I would do something like this `setTimer(timer + 1)` but this will work if it was a button click something invoking this to happen. From another project I saw how that they did `setTimer(timer => timer + 1)` which worked!
+-   I learned how to setup a Gatsby project with firebase! It was really simple thanks to this plugin (gatsby-plugin-firebase)[[https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/](https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/)]
+-   I practiced using Styled Components!
+-   I learned how to use MaterialUI to set up a navbar and footer components
+-   I learned how to get the coordinates of a click on the page, it involves using the event.
+-   I learned more about setTimeout and setInterval. I finally learned the difference between the two. - setInterval is used when you want something done at specified intervals - setTimeout is used when you want something to happen after a specifed number of milliseconds
+    <br>
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+## Technologies:
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
-# theOdinProject-where-sWaldo
+-   React
+-   React Bootstrap
+-   Material UI for Icons
+-   Dribble
+-   Sass
+-   Surge.sh
+-   Gatsby

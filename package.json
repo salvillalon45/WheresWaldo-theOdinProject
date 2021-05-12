@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "TheOdinProjectWheresWaldo",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Where's Waldo Game!",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Salvador Villalon",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -44,7 +44,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && cp public/index.html public/200.html && surge public sv_whereswaldo.surge.sh"
   },
   "repository": {
     "type": "git",
