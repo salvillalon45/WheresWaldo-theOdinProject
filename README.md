@@ -94,6 +94,8 @@ const Character = styled.div`
 
 ## Development
 
+-   Learned how to deploy applications with Firebase hosting. It is actually pretty easy to do. (I followed this guide: Deploying to Firebase Hosting
+    )[https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-firebase/]
 -   Usually if I was trying to increment a counter I would do something like this `setTimer(timer + 1)` but this will work if it was a button click something invoking this to happen. From another project I saw how that they did `setTimer(timer => timer + 1)` which worked!
 -   I learned how to setup a Gatsby project with firebase! It was really simple thanks to this plugin (gatsby-plugin-firebase)[[https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/](https://www.gatsbyjs.com/plugins/gatsby-plugin-firebase/)]
 -   I practiced using Styled Components!
@@ -146,3 +148,5 @@ function orderUserResults(userResults) {
 -   Sass
 -   Surge.sh
 -   Gatsby
+-   Firebase
+-   Firebase Hosting

@@ -16,13 +16,15 @@ function checkInputCoords(userCoords, userCharacterChoice, dbCoords) {
 	const userY = userCoords[1];
 	const dbX = dbCoords[userCharacterChoice].x;
 	const dbY = dbCoords[userCharacterChoice].y;
-
+	console.log({ userX, userY });
+	console.log({ dbX, dbY });
 	if (
 		userX >= dbX[0] &&
 		userX <= dbX[1] &&
 		userY >= dbY[0] &&
 		userY <= dbY[1]
 	) {
+		console.log('FOUND:: ', userCharacterChoice);
 		return true;
 	} else {
 		return false;

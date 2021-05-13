@@ -45,7 +45,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build && cp public/index.html public/200.html && surge public sv_whereswaldo.surge.sh"
+    "deploySurge": "gatsby build && cp public/index.html public/200.html && surge public sv_whereswaldo.surge.sh",
+    "deployFirebase": "gatsby build && firebase deploy"
   },
   "repository": {
     "type": "git",
