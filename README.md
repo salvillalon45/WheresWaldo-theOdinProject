@@ -3,7 +3,7 @@
 ## Intro
 
 -   This project was aimed as an introduction to using backend. I was familiar with Firebase, but I wanted to practice using Firebase with Gatsby
--   You can find more on the project here: [The Odin Project - Where's Waldo](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/where-s-waldo-a-photo-tagging-app)
+-   You can find more on the project here: [The Odin Project - Where's Waldo](https://www.theodinproject.com/lessons/node-path-javascript-where-s-waldo-a-photo-tagging-app)
 
 ### 📗 Fonts used
 
@@ -14,10 +14,10 @@
 
 |  Color            |  Hex                                                                 |
 | ----------------- | -------------------------------------------------------------------- |
-|  Dark Blue        |  ![#0c2d48](https://via.placeholder.com/10/0c2d48?text=+) `#0c2d48`  |
-|  Baby Blue        |  ![#b1d4e0](https://via.placeholder.com/10/b1d4e0?text=+) `#b1d4e0`  |
-|  White            |  ![#fff](https://via.placeholder.com/10/fff?text=+) `#fff`           |
-|  Black            |  ![#000](https://via.placeholder.com/10/000?text=+) `#000`           |
+|  Dark Blue        |  ![#0c2d48](https://placehold.co/15x15/0c2d48/0c2d48.png) `#0c2d48`  |
+|  Baby Blue        |  ![#b1d4e0](https://placehold.co/15x15/b1d4e0/b1d4e0.png) `#b1d4e0`  |
+|  White            |  ![#fff](https://placehold.co/15x15/fff/fff.png)          `#fff`     |
+|  Black            |  ![#000](https://placehold.co/15x15/000/000.png)          `#000`     |
 
 ## Overall
 
