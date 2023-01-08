@@ -7,7 +7,7 @@
 -   You can find more on the project here: [The Odin Project - Where's Waldo](https://www.theodinproject.com/lessons/node-path-javascript-where-s-waldo-a-photo-tagging-app)
 
 ### Demo
-<img alt="Where's Waldo Demo" src="./wheres_waldo.gif" width="600" />
+<img alt="Where's Waldo Demo" src="./waldo.gif" width="600" />
 
 ### 📗 Fonts used
 
