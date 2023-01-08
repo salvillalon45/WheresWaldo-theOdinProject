@@ -1,9 +1,13 @@
-# [The Odin Project: Javascript] - Project: Where's Waldo
+# Where's Waldo
+[The Odin Project: Javascript] - Project: Where's Waldo
 
 ## Intro
 
 -   This project was aimed as an introduction to using backend. I was familiar with Firebase, but I wanted to practice using Firebase with Gatsby
 -   You can find more on the project here: [The Odin Project - Where's Waldo](https://www.theodinproject.com/lessons/node-path-javascript-where-s-waldo-a-photo-tagging-app)
+
+### Demo
+<img alt="Where's Waldo Demo" src="./wheres_waldo.gif" width="600" />
 
 ### 📗 Fonts used
 
