@@ -8,7 +8,6 @@
 - View Project: https://theodinproject-whereswaldo.web.app/
 
 ### Demo
-<img alt="Where's Waldo Demo" src="./waldo.gif" width="600" />
 
 ### 📗 Fonts used
 
